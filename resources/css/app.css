@@ -1,4 +1,6 @@
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Quicksand:wght@300..700&display=swap");
+
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,6 +8,442 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Fonts */
+    --font-heading: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-accent: "Pacifico", cursive;
+
+    /* Colors - Primary Palette */
+    --color-primary: #e4b429; /* Mustard Gold */
+    --color-primary-hover: #f1c93a; /* Lighter Mustard Gold for hover */
+    --color-primary-dark: #c49a23; /* Darker Mustard for contrast */
+    --color-secondary: #4a6741; /* Safari Green */
+    --color-secondary-light: #5a7851; /* Lighter Safari Green */
+    --color-sky-blue: #2e86c1; /* Sky Blue */
+    --color-light: #fefefe; /* Warm White */
+    --color-accent: #e67e22; /* Sunset Orange */
+    --color-accent-hover: #d35400; /* Darker Sunset Orange */
+    --color-earth: #8b4513; /* Earth Brown */
+    --color-teal: #1abc9c; /* Deep Teal */
+
+    /* Semantic Colors */
+    --color-success: #27ae60;
+    --color-warning: #f39c12;
+    --color-danger: #e74c3c;
+    --color-info: #3498db;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        var(--color-accent) 100%
+    );
+    --gradient-adventure: linear-gradient(
+        45deg,
+        var(--color-secondary) 0%,
+        var(--color-teal) 100%
+    );
+    --gradient-overlay: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+}
+
+/* Custom utilities */
+@layer utilities {
+    /* Font Families */
+    .font-heading {
+        font-family: var(--font-heading);
+    }
+    .font-body {
+        font-family: var(--font-body);
+    }
+    .font-accent {
+        font-family: var(--font-accent);
+    }
+
+    /* Text Colors */
+    .text-primary {
+        color: var(--color-primary);
+    }
+    .text-primary-dark {
+        color: var(--color-primary-dark);
+    }
+    .text-secondary {
+        color: var(--color-secondary);
+    }
+    .text-sky-blue {
+        color: var(--color-sky-blue);
+    }
+    .text-accent {
+        color: var(--color-accent);
+    }
+    .text-earth {
+        color: var(--color-earth);
+    }
+    .text-teal {
+        color: var(--color-teal);
+    }
+
+    /* Background Colors */
+    .bg-light {
+        background-color: var(--color-light);
+    }
+    .bg-primary {
+        background-color: var(--color-primary);
+    }
+    .bg-primary-dark {
+        background-color: var(--color-primary-dark);
+    }
+    .bg-secondary {
+        background-color: var(--color-secondary);
+    }
+    .bg-secondary-light {
+        background-color: var(--color-secondary-light);
+    }
+    .bg-sky-blue {
+        background-color: var(--color-sky-blue);
+    }
+    .bg-accent {
+        background-color: var(--color-accent);
+    }
+    .bg-earth {
+        background-color: var(--color-earth);
+    }
+    .bg-teal {
+        background-color: var(--color-teal);
+    }
+
+    /* Border Colors */
+    .border-earth {
+        border-color: var(--color-earth);
+    }
+    .border-primary {
+        border-color: var(--color-primary);
+    }
+    .border-secondary {
+        border-color: var(--color-secondary);
+    }
+
+    /* Gradients */
+    .bg-gradient-hero {
+        background: var(--gradient-hero);
+    }
+    .bg-gradient-adventure {
+        background: var(--gradient-adventure);
+    }
+    .bg-gradient-overlay {
+        background: var(--gradient-overlay);
+    }
+
+    /* Interactive States */
+    .hover\:bg-primary-hover:hover {
+        background-color: var(--color-primary-hover);
+    }
+    .hover\:bg-accent-hover:hover {
+        background-color: var(--color-accent-hover);
+    }
+    .focus\:outline-accent:focus {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+    }
+
+    /* Call-to-Action Styles */
+    .btn-primary {
+        background-color: var(--color-accent);
+        color: var(--color-light);
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: var(--color-accent-hover);
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+        background-color: var(--color-primary);
+        color: var(--color-light);
+        transform: translateY(-2px);
+    }
+}
+
+/* Parallax and Animation Effects */
+.parallax-bg {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.floating-element {
+    animation: float 6s ease-in-out infinite;
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+.fade-in-up-delay {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 1s forwards;
+}
+
+.fade-in-up-delay-2 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 1.5s forwards;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse-glow {
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(228, 180, 41, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(228, 180, 41, 0.6);
+    }
+}
+
+.pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Video Background Styles */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+/* Interactive Hover Effects */
+.interactive-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Adventure Card Specific */
+.adventure-card {
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adventure-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.adventure-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(228, 180, 41, 0.1) 0%,
+        rgba(230, 126, 34, 0.1) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.adventure-card:hover::before {
+    opacity: 1;
+}
+
+.adventure-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 2rem;
+    z-index: 2;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.adventure-card:hover .adventure-card-content {
+    transform: translateY(0);
+}
+
+/* Floating Elements */
+.floating-element {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+.pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(228, 180, 41, 0.3);
+        border-color: rgba(228, 180, 41, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(228, 180, 41, 0.6);
+        border-color: rgba(228, 180, 41, 0.8);
+    }
+}
+
+/* Fade In Animations */
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.fade-in-up-delay {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.fade-in-up-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.fade-in-up-delay-3 {
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Staggered Animation for Cards */
+.stagger-1 {
+    animation-delay: 0.1s;
+}
+.stagger-2 {
+    animation-delay: 0.2s;
+}
+.stagger-3 {
+    animation-delay: 0.3s;
+}
+.stagger-4 {
+    animation-delay: 0.4s;
+}
+.stagger-5 {
+    animation-delay: 0.5s;
+}
+
+/* Category Icon Animations */
+.category-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adventure-card:hover .category-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 20px rgba(228, 180, 41, 0.6));
+}
+
+/* Premium Button Styles */
+.btn-premium {
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        var(--color-accent) 100%
+    );
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-premium::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.btn-premium:hover::before {
+    left: 100%;
+}
+
+.btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(230, 126, 34, 0.4);
 }

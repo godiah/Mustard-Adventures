@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.landing')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('content')
+    @include('components.hero-section')
 
-    <title>Mustard Adventures</title>
+    @include('components.adventure-categories')
 
-    <!-- Styles / Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+    @include('components.upcoming-adventures')
 
-<body>
-    <h1 class="text-amber-800">Welcome</h1>
-</body>
+    @include('components.why-choose-us')
 
-</html>
+    @include('components.past-adventures-gallery')
+
+    @include('components.reviews-testimonials')
+
+    @include('components.about-mustard-adventures')
+
+    @include('components.contact-booking')
+
+    <!-- Footer -->
+    @include('components.footer')
+@endsection

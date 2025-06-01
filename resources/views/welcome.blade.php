@@ -1,21 +1,38 @@
 @extends('layouts.landing')
 
 @section('content')
-    @include('components.hero-section')
+    <!-- Navigation -->
+    @include('components.navbar')
 
-    @include('components.adventure-categories')
+    <!-- Home Section -->
+    <section id="home">
+        @include('components.hero-section')
+    </section>
 
-    @include('components.upcoming-adventures')
+    <!-- Adventure Categories Section -->
+    <section id="adventures">
+        @include('components.adventure-categories')
+        @include('components.upcoming-adventures')
+    </section>
 
+    <!-- Why Choose Us Section -->
     @include('components.why-choose-us')
 
-    @include('components.past-adventures-gallery')
+    <!-- Gallery Section -->
+    <section id="gallery">
+        @include('components.past-adventures-gallery')
+        @include('components.reviews-testimonials')
+    </section>
 
-    @include('components.reviews-testimonials')
+    <!-- About Section -->
+    <section id="about">
+        @include('components.about-mustard-adventures')
+    </section>
 
-    @include('components.about-mustard-adventures')
-
-    @include('components.contact-booking')
+    <!-- Contact Section -->
+    <section id="contact">
+        @include('components.contact-booking')
+    </section>
 
     <!-- Footer -->
     @include('components.footer')

@@ -245,10 +245,8 @@
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
         let lastScrollY = 0;
-        let scrollDirection = 'up';
-        let hideTimeout = null;
-        let isScrolling = false;
         let navbarVisible = false;
+        const scrollThreshold = 50; // Pixels from top to trigger navbar visibility
 
         // Sections to track
         const sections = [{
@@ -291,49 +289,15 @@
             }
         }
 
-        // Clear hide timeout
-        function clearHideTimeout() {
-            if (hideTimeout) {
-                clearTimeout(hideTimeout);
-                hideTimeout = null;
-            }
-        }
-
-        // Set hide timeout
-        function setHideTimeout() {
-            clearHideTimeout();
-            hideTimeout = setTimeout(() => {
-                if (!isScrolling && window.scrollY > 50) {
-                    hideNavbar();
-                }
-            }, 5000); // 5 seconds of inactivity
-        }
-
-        // Enhanced scroll handler
+        // Simplified scroll handler - show navbar when scrolled, hide only at top
         function handleScroll() {
             const currentScrollY = window.scrollY;
-            const scrollDelta = Math.abs(currentScrollY - lastScrollY);
 
-            // Determine scroll direction
-            scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-
-            // Set scrolling flag
-            isScrolling = true;
-            clearHideTimeout();
-
-            // Navbar visibility logic
-            if (currentScrollY <= 50) {
-                // At top - hide navbar
+            // Simple logic: hide only at top, show everywhere else
+            if (currentScrollY <= scrollThreshold) {
                 hideNavbar();
             } else {
-                // Not at top - show navbar when scrolling starts
                 showNavbar();
-
-                // Set timeout to hide after inactivity
-                setTimeout(() => {
-                    isScrolling = false;
-                    setHideTimeout();
-                }, 150);
             }
 
             lastScrollY = currentScrollY;
@@ -362,15 +326,17 @@
                     link.classList.remove('text-gray-800');
 
                     // Update indicator position with smooth animation
-                    requestAnimationFrame(() => {
-                        const linkRect = link.getBoundingClientRect();
-                        const navRect = navbar.getBoundingClientRect();
-                        const indicatorLeft = linkRect.left - navRect.left;
-                        const indicatorWidth = linkRect.width;
+                    if (navIndicator) {
+                        requestAnimationFrame(() => {
+                            const linkRect = link.getBoundingClientRect();
+                            const navRect = navbar.getBoundingClientRect();
+                            const indicatorLeft = linkRect.left - navRect.left;
+                            const indicatorWidth = linkRect.width;
 
-                        navIndicator.style.left = `${indicatorLeft}px`;
-                        navIndicator.style.width = `${indicatorWidth}px`;
-                    });
+                            navIndicator.style.left = `${indicatorLeft}px`;
+                            navIndicator.style.width = `${indicatorWidth}px`;
+                        });
+                    }
                 } else {
                     link.classList.remove('text-blue-600');
                     link.classList.add('text-gray-800');
@@ -402,13 +368,14 @@
 
         // Mobile menu toggle with enhanced animations
         function toggleMobileMenu() {
-            mobileMenu.classList.toggle('translate-x-full');
-            document.body.classList.toggle('overflow-hidden');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('translate-x-full');
+                document.body.classList.toggle('overflow-hidden');
+            }
         }
 
-        // Enhanced event listeners
+        // Optimized scroll event listener
         let ticking = false;
-
         window.addEventListener('scroll', () => {
             if (!ticking) {
                 requestAnimationFrame(() => {
@@ -429,53 +396,83 @@
                 scrollToSection(targetId);
 
                 // Close mobile menu if open
-                if (!mobileMenu.classList.contains('translate-x-full')) {
+                if (mobileMenu && !mobileMenu.classList.contains('translate-x-full')) {
                     toggleMobileMenu();
                 }
-
-                // Show navbar briefly when navigating
-                showNavbar();
-                clearHideTimeout();
-                setHideTimeout();
             });
         });
 
         // Mobile menu controls
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
-        mobileMenuClose.addEventListener('click', toggleMobileMenu);
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        }
+
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', toggleMobileMenu);
+        }
 
         // Close mobile menu when clicking backdrop
-        mobileMenu.addEventListener('click', function(e) {
-            if (e.target === this) {
-                toggleMobileMenu();
-            }
-        });
-
-        // Enhanced keyboard controls
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
-                toggleMobileMenu();
-            }
-        });
-
-        // Mouse movement detection - show navbar on hover near top
-        document.addEventListener('mousemove', function(e) {
-            if (e.clientY < 100 && window.scrollY > 50) {
-                showNavbar();
-                clearHideTimeout();
-                setHideTimeout();
-            }
-        });
-
-        // Initialize
-        updateActiveSection();
-
-        // Handle page load scroll position
-        if (window.scrollY <= 50) {
-            hideNavbar();
-        } else {
-            showNavbar();
-            setHideTimeout();
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    toggleMobileMenu();
+                }
+            });
         }
+
+        // Keyboard controls - close mobile menu on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains(
+                'translate-x-full')) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Mouse hover near top - show navbar temporarily
+        document.addEventListener('mousemove', function(e) {
+            if (e.clientY < 100 && window.scrollY <= scrollThreshold) {
+                showNavbar();
+
+                // Hide after 3 seconds if still at top
+                setTimeout(() => {
+                    if (window.scrollY <= scrollThreshold) {
+                        hideNavbar();
+                    }
+                }, 3000);
+            }
+        });
+
+        // Handle window resize to recalculate positions
+        window.addEventListener('resize', () => {
+            updateActiveSection();
+        });
+
+        // Initialize navbar state based on current scroll position
+        function initializeNavbar() {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY <= scrollThreshold) {
+                hideNavbar();
+            } else {
+                showNavbar();
+            }
+
+            updateActiveSection();
+        }
+
+        // Initialize on page load
+        initializeNavbar();
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', () => {
+            setTimeout(initializeNavbar, 100);
+        });
+
+        // Handle page visibility change (when user returns to tab)
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                initializeNavbar();
+            }
+        });
     });
 </script>

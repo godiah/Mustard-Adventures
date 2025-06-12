@@ -52,7 +52,7 @@
         </div>
 
         <!-- Founder Story Section -->
-        <div class="mb-20 fade-in-up-delay">
+        {{-- <div class="mb-20 fade-in-up-delay">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Founder Photo -->
                 <div class="relative">
@@ -117,10 +117,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Team Section -->
-        <div class="mb-20 fade-in-up-delay-2">
+        {{-- <div class="mb-20 fade-in-up-delay-2">
             <div class="text-center mb-12">
                 <h3 class="font-heading text-3xl md:text-4xl font-bold text-secondary mb-4">
                     Meet Our Expert
@@ -244,7 +244,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Company Values -->
         <div class="mb-20 fade-in-up-delay-3">
@@ -308,8 +308,7 @@
                 <div class="glass-card p-6 rounded-3xl text-center interactive-card group">
                     <div
                         class="w-16 h-16 bg-secondary/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>

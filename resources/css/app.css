@@ -300,6 +300,69 @@
     background: rgba(255, 255, 255, 0.15);
 }
 
+/* Background Carousel Styles */
+.carousel-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    will-change: opacity;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(31, 41, 55, 0.8) 0%,
+        rgba(146, 64, 14, 0.6) 35%,
+        rgba(31, 41, 55, 0.9) 100%
+    );
+    mix-blend-mode: overlay;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 25;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+.carousel-indicator:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
 /* Adventure Card Specific */
 .adventure-card {
     position: relative;

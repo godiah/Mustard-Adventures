@@ -70,8 +70,7 @@
             <!-- Large Featured Image -->
             <div class="col-span-2 row-span-2 gallery-item safari" data-category="safari">
                 <div class="relative h-full min-h-[400px] rounded-2xl overflow-hidden group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Masai Mara Safari"
+                    <img src="{{ asset('images/gallery/hike-2.jpg') }}" alt="Masai Mara Safari"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
                     <!-- Overlay -->
@@ -82,9 +81,8 @@
                     <!-- Content -->
                     <div
                         class="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                        <h3 class="font-heading text-xl font-bold mb-2">Masai Mara Migration</h3>
-                        <p class="text-sm text-gray-200 mb-3">Witnessing the great wildebeest migration with our amazing
-                            group from Germany!</p>
+                        <h3 class="font-heading text-xl font-bold mb-2">Naru Moru River Lodge</h3>
+                        <p class="text-sm text-gray-200 mb-3">Witnessing the great hike and camping ever!</p>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
                                 <svg class="w-4 h-4 text-accent mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -113,8 +111,7 @@
             <!-- Regular Images -->
             <div class="gallery-item mountain" data-category="mountain">
                 <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Mount Kenya Summit"
+                    <img src="{{ asset('images/gallery/hike.jpg') }}" alt="Mount Kenya Summit"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
                     <div
@@ -141,8 +138,7 @@
 
             <div class="gallery-item cultural" data-category="cultural">
                 <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Maasai Village Visit"
+                    <img src="{{ asset('images/gallery/hike-3.jpg') }}" alt="Maasai Village Visit"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
                     <div
@@ -197,8 +193,7 @@
 
             <div class="gallery-item beach" data-category="beach">
                 <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1505881502353-a1986add3762?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Diani Beach"
+                    <img src="{{ asset('images/gallery/culture.jpg') }}" alt="Diani Beach"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
                     <div
@@ -225,8 +220,7 @@
 
             <div class="gallery-item safari" data-category="safari">
                 <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Elephant Encounter"
+                    <img src="{{ asset('images/gallery/giraffe.jpg') }}" alt="Elephant Encounter"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
                     <div
@@ -280,8 +274,7 @@
 
             <div class="gallery-item cultural" data-category="cultural">
                 <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Traditional Dance"
+                    <img src="{{ asset('images/gallery/waterfall.jpg') }}" alt="Traditional Dance"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
                     <div
@@ -308,8 +301,8 @@
         </div>
 
         <!-- Load More Button -->
-        <div class="text-center fade-in-up-delay-3">
-            <button
+        <div class="text-center fade-in-up-delay-3" id="loadMoreContainer">
+            <button id="loadMoreBtn"
                 class="inline-flex items-center px-8 py-4 rounded-full bg-white border-2 border-primary text-primary font-medium text-lg hover:bg-primary hover:text-white transition-colors group">
                 Load More Adventures
                 <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none"
@@ -324,31 +317,159 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const galleryGrid = document.querySelector('#galleryGrid');
+        const loadMoreContainer = document.querySelector('#loadMoreContainer');
+        const loadMoreBtn = document.querySelector('#loadMoreBtn');
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+        let additionalItems = [];
+        let hideMoreBtn = null;
+
+        // Sample additional items to load (replace with your actual images/data)
+        const moreItems = [{
+                category: 'safari',
+                image: '{{ asset('images/gallery/zebra.jpg') }}',
+                alt: 'Amboseli Safari',
+                title: 'Amboseli Adventure',
+                likes: 195,
+                time: '4 days ago'
+            },
+            {
+                category: 'beach',
+                image: '{{ asset('images/gallery/wildbeast.jpg') }}',
+                alt: 'Watamu Beach',
+                title: 'Watamu Waves',
+                likes: 230,
+                time: '2 days ago'
+            },
+            {
+                category: 'mountain',
+                image: '{{ asset('images/gallery/waterfall.jpg') }}',
+                alt: 'Aberdare Ranges',
+                title: 'Aberdare Trek',
+                likes: 142,
+                time: '1 week ago'
+            },
+            {
+                category: 'cultural',
+                image: '{{ asset('images/gallery/lake.jpg') }}',
+                alt: 'Samburu Culture',
+                title: 'Samburu Traditions',
+                likes: 167,
+                time: '3 days ago'
+            }
+        ];
+
+        // Function to create a gallery item
+        function createGalleryItem(item) {
+            const div = document.createElement('div');
+            div.className = `gallery-item ${item.category}`;
+            div.setAttribute('data-category', item.category);
+            div.innerHTML = `
+            <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
+                <img src="${item.image}" alt="${item.alt}"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-3 left-3 right-3 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                    <h4 class="font-heading text-sm font-bold mb-1">${item.title}</h4>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <svg class="w-3 h-3 text-accent mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-xs">${item.likes}</span>
+                        </div>
+                        <span class="text-xs text-gray-300">${item.time}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+            return div;
+        }
+
+        // Function to create the Hide More button
+        function createHideMoreButton() {
+            const btn = document.createElement('button');
+            btn.id = 'hideMoreBtn';
+            btn.className =
+                'inline-flex items-center px-8 py-4 rounded-full bg-white border-2 border-primary text-primary font-medium text-lg hover:bg-primary hover:text-white transition-colors group';
+            btn.innerHTML = `
+            Hide More Adventures
+            <svg class="w-5 h-5 ml-2 transform group-hover:-translate-x-1 transition-transform" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+            </svg>
+        `;
+            return btn;
+        }
+
+        // Load More button click handler
+        loadMoreBtn.addEventListener('click', function() {
+            // Append new gallery items
+            moreItems.forEach(item => {
+                const galleryItem = createGalleryItem(item);
+                galleryGrid.appendChild(galleryItem);
+                additionalItems.push(galleryItem);
+                galleryItem.style.animation = 'fadeInUp 0.5s ease forwards';
+            });
+
+            // Hide Load More button
+            loadMoreContainer.classList.add('hidden');
+
+            // Create and append Hide More button after galleryGrid
+            hideMoreBtn = createHideMoreButton();
+            const hideMoreContainer = document.createElement('div');
+            hideMoreContainer.className = 'text-center fade-in-up-delay-3';
+            hideMoreContainer.appendChild(hideMoreBtn);
+            galleryGrid.parentNode.insertBefore(hideMoreContainer, galleryGrid.nextSibling);
+
+            // Apply current filter to new items
+            applyCurrentFilter();
+
+            // Add click handler for Hide More button
+            hideMoreBtn.addEventListener('click', function() {
+                // Remove additional items
+                additionalItems.forEach(item => item.remove());
+                additionalItems = [];
+
+                // Remove Hide More button and its container
+                hideMoreContainer.remove();
+                hideMoreBtn = null;
+
+                // Show Load More button
+                loadMoreContainer.classList.remove('hidden');
+
+                // Re-apply current filter
+                applyCurrentFilter();
+            });
+        });
+
+        // Filter functionality
+        function applyCurrentFilter() {
+            const activeFilter = document.querySelector('.filter-btn.active')?.getAttribute('data-filter') ||
+                'all';
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                if (activeFilter === 'all' || item.getAttribute('data-category') === activeFilter) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeInUp 0.5s ease forwards';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                const filter = this.getAttribute('data-filter');
-
-                // Update active button
                 filterBtns.forEach(b => {
                     b.classList.remove('bg-primary', 'text-white', 'active');
                     b.classList.add('bg-gray-200', 'text-gray-700');
                 });
                 this.classList.add('bg-primary', 'text-white', 'active');
                 this.classList.remove('bg-gray-200', 'text-gray-700');
-
-                // Filter gallery items
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') ===
-                        filter) {
-                        item.style.display = 'block';
-                        item.style.animation = 'fadeInUp 0.5s ease forwards';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+                applyCurrentFilter();
             });
         });
     });

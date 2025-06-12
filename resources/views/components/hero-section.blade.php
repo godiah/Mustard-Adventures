@@ -1,7 +1,23 @@
 <section class="relative min-h-screen w-full overflow-hidden p-6">
     <!-- Dynamic Background with Parallax Effect -->
-    <div class="absolute inset-0 bg-gradient-to-br from-secondary via-earth to-secondary-light parallax-bg"
+    {{-- <div class="absolute inset-0 bg-gradient-to-br from-secondary via-earth to-secondary-light parallax-bg"
         style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2068&q=80'); background-blend-mode: overlay;">
+    </div> --}}
+    <div class="carousel-container parallax-bg">
+        <!-- Safari/Wildlife Image -->
+        <div class="carousel-slide active" style="background-image: url('{{ asset('images/safari.jpg') }}')"></div>
+
+        <!-- Mountain Climbing Image -->
+        <div class="carousel-slide" style="background-image: url('{{ asset('images/mountain.jpg') }}')"></div>
+
+        <!-- Cultural Tours Image -->
+        <div class="carousel-slide" style="background-image: url('{{ asset('images/beach.jpg') }}')"></div>
+
+        <!-- Adventure Hiking Image -->
+        <div class="carousel-slide" style="background-image: url('{{ asset('images/mountain-2.jpg') }}')"></div>
+
+        <!-- Scenic Landscapes Image -->
+        <div class="carousel-slide" style="background-image: url('{{ asset('images/safari-2.jpg') }}')"></div>
     </div>
 
     <!-- Animated Overlay Gradient -->
@@ -24,8 +40,8 @@
 
             <!-- Brand Badge -->
             <div class="fade-in-up mb-2">
-                <div class="inline-flex items-center px-4 py-2 glass-card interactive-card">
-                    <svg class="w-6 h-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="inline-flex items-center px-4 py-2 glass-card">
+                    <svg class="w-3 h-3 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
                         </path>
@@ -56,7 +72,7 @@
 
             <!-- Enhanced Subheading -->
             <div class="fade-in-up-delay-2 mb-12">
-                <p class="font-body text-lg md:text-xl text-gray-100 max-w-5xl mx-auto leading-relaxed mb-6">
+                <p class="font-body text-base md:text-xl text-gray-100 max-w-5xl mx-auto leading-relaxed mb-6">
                     Expert-guided tours, thrilling hikes, and authentic outdoor experiences across Kenya's most
                     spectacular destinations
                 </p>
@@ -95,7 +111,7 @@
                     </button>
 
                     <button
-                        class="btn-secondary text-lg px-10 py-4 min-w-[220px] font-heading group relative overflow-hidden">
+                        class="hidden md:block btn-secondary text-lg px-10 py-4 min-w-[220px] font-heading group relative overflow-hidden">
                         <span class="relative z-10 flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,17 +195,96 @@
         </div>
     </div>
 
-    <!-- Modern Navigation Dots -->
-    <div class="absolute right-8 top-1/2 transform -translate-y-1/2 hidden xl:flex flex-col space-y-3 z-30">
-        <div class="w-3 h-3 bg-primary rounded-full cursor-pointer"></div>
-        <div class="w-2 h-2 bg-white/40 rounded-full cursor-pointer"></div>
-        <div class="w-2 h-2 bg-white/40 rounded-full cursor-pointer"></div>
-        <div class="w-2 h-2 bg-white/40 rounded-full cursor-pointer"></div>
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators">
+        <div class="carousel-indicator active" data-slide="0"></div>
+        <div class="carousel-indicator" data-slide="1"></div>
+        <div class="carousel-indicator" data-slide="2"></div>
+        <div class="carousel-indicator" data-slide="3"></div>
+        <div class="carousel-indicator" data-slide="4"></div>
     </div>
 </section>
 
 <!-- JavaScript for Enhanced Interactions -->
 <script>
+    // Carousel functionality
+    class BackgroundCarousel {
+        constructor() {
+            this.slides = document.querySelectorAll('.carousel-slide');
+            this.indicators = document.querySelectorAll('.carousel-indicator');
+            this.currentSlide = 0;
+            this.slideInterval = 5000; // 5 seconds
+            this.intervalId = null;
+
+            this.init();
+        }
+
+        init() {
+            if (this.slides.length === 0 || this.indicators.length === 0) {
+                console.warn('Carousel: No slides or indicators found.');
+                return;
+            }
+            if (this.slides.length !== this.indicators.length) {
+                console.warn('Carousel: Number of slides and indicators do not match.');
+            }
+
+            this.startAutoSlide();
+
+            this.indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    this.goToSlide(index);
+                    this.resetAutoSlide();
+                });
+            });
+
+            const heroSection = document.querySelector('section');
+            heroSection.addEventListener('mouseenter', () => this.pauseAutoSlide());
+            heroSection.addEventListener('mouseleave', () => this.startAutoSlide());
+        }
+
+        goToSlide(slideIndex) {
+            this.slides[this.currentSlide].classList.remove('active');
+            this.indicators[this.currentSlide].classList.remove('active');
+
+            this.currentSlide = slideIndex;
+
+            this.slides[this.currentSlide].classList.add('active');
+            this.indicators[this.currentSlide].classList.add('active');
+        }
+
+        nextSlide() {
+            const nextIndex = (this.currentSlide + 1) % this.slides.length;
+            this.goToSlide(nextIndex);
+        }
+
+        startAutoSlide() {
+            this.intervalId = setInterval(() => {
+                this.nextSlide();
+            }, this.slideInterval);
+        }
+
+        pauseAutoSlide() {
+            if (this.intervalId) {
+                clearInterval(this.intervalId);
+                this.intervalId = null;
+            }
+        }
+
+        resetAutoSlide() {
+            this.pauseAutoSlide();
+            this.startAutoSlide();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        new BackgroundCarousel();
+    });
+
+    // Initialize carousel when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        new BackgroundCarousel();
+    });
+
     // Parallax scrolling effect
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;

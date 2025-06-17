@@ -41,7 +41,8 @@
 
                     <div class="space-y-6">
                         <!-- WhatsApp -->
-                        <a href="https://wa.me/254712345678"
+                        <a href="https://wa.me/254710136271"
+                        target="_blank"
                             class="flex items-center p-4 rounded-2xl bg-green-500/10 border border-green-500/20 hover:bg-green-500/20 transition-all duration-300 group">
                             <div
                                 class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
@@ -52,13 +53,14 @@
                             </div>
                             <div>
                                 <h4 class="font-heading text-lg font-bold text-white mb-1">WhatsApp</h4>
-                                <p class="text-green-400 font-medium">+254 712 345 678</p>
+                                <p class="text-green-400 font-medium">+254 710 136 271</p>
                                 <p class="text-gray-400 text-sm">Instant response • Available 24/7</p>
                             </div>
                         </a>
 
                         <!-- Phone -->
-                        <a href="tel:+254712345678"
+                        <a href="tel:+254710136271"
+                        target="_blank"
                             class="flex items-center p-4 rounded-2xl bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all duration-300 group">
                             <div
                                 class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
@@ -71,13 +73,14 @@
                             </div>
                             <div>
                                 <h4 class="font-heading text-lg font-bold text-white mb-1">Phone</h4>
-                                <p class="text-primary font-medium">+254 712 345 678</p>
+                                <p class="text-primary font-medium">+254 710 136 271</p>
                                 <p class="text-gray-400 text-sm">Mon-Sun • 6:00 AM - 10:00 PM EAT</p>
                             </div>
                         </a>
 
                         <!-- Email -->
                         <a href="mailto:info@mustardadventures.com"
+                        target="_blank"
                             class="flex items-center p-4 rounded-2xl bg-teal/10 border border-teal/20 hover:bg-teal/20 transition-all duration-300 group">
                             <div
                                 class="w-12 h-12 bg-teal/20 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
@@ -112,17 +115,17 @@
                     <div class="space-y-2">
                         <div class="flex items-center">
                             <span class="text-gray-400 text-sm mr-2">Emergency Hotline:</span>
-                            <a href="tel:+254700123456" class="text-accent font-bold">+254 700 123 456</a>
+                            <a href="tel:+254710136271" class="text-accent font-bold">+254 710 136 271</a>
                         </div>
-                        <div class="flex items-center">
+                        {{-- <div class="flex items-center">
                             <span class="text-gray-400 text-sm mr-2">Satellite Phone:</span>
                             <span class="text-accent font-bold">+881 123 456 789</span>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
                 <!-- Office Location -->
-                <div class="glass-card-dark p-8 rounded-3xl">
+                {{-- <div class="glass-card-dark p-8 rounded-3xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,7 +145,7 @@
                         <p class="text-sm text-gray-400">Mon-Fri: 8:00 AM - 6:00 PM EAT</p>
                         <p class="text-sm text-gray-400">Sat: 9:00 AM - 4:00 PM EAT</p>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Booking Form -->
@@ -256,7 +259,8 @@
 
                 <!-- Social Media Links -->
                 <div class="flex justify-center space-x-6 mb-8">
-                    <a href="https://instagram.com/mustardadventures"
+                    <a href="https://www.instagram.com/mustard_adventures/"
+                    target="_blank"
                         class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center hover:bg-pink-500/30 transition-all duration-300 group">
                         <svg class="w-6 h-6 text-pink-400 group-hover:scale-110 transition-transform duration-300"
                             fill="currentColor" viewBox="0 0 24 24">
@@ -265,7 +269,8 @@
                         </svg>
                     </a>
 
-                    <a href="https://facebook.com/mustardadventures"
+                    <a href="https://www.facebook.com/people/Mustard-Adventures/61576743444132/"
+                        target="_blank"
                         class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center hover:bg-blue-500/30 transition-all duration-300 group">
                         <svg class="w-6 h-6 text-blue-400 group-hover:scale-110 transition-transform duration-300"
                             fill="currentColor" viewBox="0 0 24 24">
@@ -274,25 +279,26 @@
                         </svg>
                     </a>
 
-                    <a href="https://twitter.com/mustardadventures"
+                    {{-- <a href="https://twitter.com/mustardadventures"
                         class="w-12 h-12 bg-sky-500/20 rounded-xl flex items-center justify-center hover:bg-sky-500/30 transition-all duration-300 group">
                         <svg class="w-6 h-6 text-sky-400 group-hover:scale-110 transition-transform duration-300"
                             fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                         </svg>
-                    </a>
+                    </a> --}}
 
-                    <a href="https://youtube.com/mustardadventures"
+                    {{-- <a href="https://youtube.com/mustardadventures"
                         class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center hover:bg-red-500/30 transition-all duration-300 group">
                         <svg class="w-6 h-6 text-red-400 group-hover:scale-110 transition-transform duration-300"
                             fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                         </svg>
-                    </a>
+                    </a> --}}
 
-                    <a href="https://tiktok.com/@mustardadventures"
+                    <a href="https://www.tiktok.com/@mustard_adventures"
+                        target="_blank"
                         class="w-12 h-12 bg-gray-800/20 rounded-xl flex items-center justify-center hover:bg-gray-800/30 transition-all duration-300 group">
                         <svg class="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300"
                             fill="currentColor" viewBox="0 0 24 24">
@@ -307,7 +313,7 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://wa.me/254712345678" class="btn-primary px-6 py-3">
+                    <a href="https://wa.me/254710136271" target="_blank" class="btn-primary px-6 py-3">
                         Start Planning Now
                     </a>
                     <a href="mailto:info@mustardadventures.com" class="btn-secondary px-6 py-3">

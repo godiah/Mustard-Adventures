@@ -2,7 +2,7 @@
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0"
-            style="background-image: 
+            style="background-image:
             radial-gradient(circle at 20% 50%, var(--color-primary) 2px, transparent 2px),
             radial-gradient(circle at 80% 50%, var(--color-accent) 1px, transparent 1px),
             radial-gradient(circle at 40% 20%, var(--color-teal) 1px, transparent 1px),
@@ -322,7 +322,7 @@
 
         <!-- Certifications & Awards -->
         <div class="fade-in-up-delay-3">
-            <div class="text-center mb-12">
+            {{-- <div class="text-center mb-12">
                 <h3 class="font-heading text-3xl md:text-4xl font-bold text-secondary mb-4">
                     Certifications &
                     <span class="text-primary font-accent">Awards</span>
@@ -330,10 +330,10 @@
                 <p class="font-body text-lg text-gray-600 max-w-3xl mx-auto">
                     Our commitment to excellence is recognized by leading industry organizations and safety authorities.
                 </p>
-            </div>
+            </div> --}}
 
             <!-- Certifications Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+            {{-- <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
                 <!-- Certification 1 -->
                 <div class="glass-card p-4 rounded-2xl text-center interactive-card group">
                     <div
@@ -417,17 +417,17 @@
                     <h5 class="font-heading text-sm font-bold text-secondary mb-1">Top Rated</h5>
                     <p class="text-xs text-gray-500">TripAdvisor 2024</p>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Company Stats -->
             <div class="glass-card p-8 rounded-3xl">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     <div>
-                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2">15+</div>
+                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2">7+</div>
                         <div class="text-sm text-gray-600">Years of Excellence</div>
                     </div>
                     <div>
-                        <div class="text-3xl md:text-4xl font-bold text-teal mb-2">5000+</div>
+                        <div class="text-3xl md:text-4xl font-bold text-teal mb-2">250+</div>
                         <div class="text-sm text-gray-600">Happy Adventurers</div>
                     </div>
                     <div>

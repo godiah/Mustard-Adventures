@@ -91,7 +91,7 @@
                                 2-12 People
                             </span>
                         </div>
-                        <button class="btn-premium">Explore</button>
+                        {{-- <button class="btn-premium">Explore</button> --}}
                     </div>
                 </div>
             </div>
@@ -144,7 +144,7 @@
                                 Moderate
                             </span>
                         </div>
-                        <button class="btn-premium">Explore</button>
+                        {{-- <button class="btn-premium">Explore</button> --}}
                     </div>
                 </div>
             </div>
@@ -199,7 +199,7 @@
                                 All Levels
                             </span>
                         </div>
-                        <button class="btn-premium">Explore</button>
+                        {{-- <button class="btn-premium">Explore</button> --}}
                     </div>
                 </div>
             </div>
@@ -254,7 +254,7 @@
                                 Family Friendly
                             </span>
                         </div>
-                        <button class="btn-premium">Explore</button>
+                        {{-- <button class="btn-premium">Explore</button> --}}
                     </div>
                 </div>
             </div>
@@ -310,7 +310,7 @@
                                 Premium Experience
                             </span>
                         </div>
-                        <button class="btn-premium">Explore</button>
+                        {{-- <button class="btn-premium">Explore</button> --}}
                     </div>
                 </div>
             </div>
@@ -327,9 +327,9 @@
                     level, and travel preferences.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="btn-primary px-8 py-4 text-lg">
+                    <a href="#contact" class="btn-primary px-8 py-4 text-lg">
                         Get Custom Itinerary
-                    </button>
+                    </a>
                     <button class="btn-secondary px-8 py-4 text-lg">
                         View All Adventures
                     </button>

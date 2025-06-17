@@ -188,14 +188,14 @@
                         </svg>
                         Medical Kits
                     </div>
-                    <div class="flex items-center text-gray-300 text-xs">
+                    {{-- <div class="flex items-center text-gray-300 text-xs">
                         <svg class="w-3 h-3 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                 clip-rule="evenodd"></path>
                         </svg>
                         Satellite Phones
-                    </div>
+                    </div> --}}
                     <div class="flex items-center text-gray-300 text-xs">
                         <svg class="w-3 h-3 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
@@ -358,7 +358,7 @@
                 <!-- Stats Row -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-primary mb-1">5000+</div>
+                        <div class="text-3xl font-bold text-primary mb-1">250+</div>
                         <div class="text-sm text-gray-400">Happy Travelers</div>
                     </div>
                     <div class="text-center">
@@ -366,7 +366,7 @@
                         <div class="text-sm text-gray-400">Average Rating</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-primary mb-1">15+</div>
+                        <div class="text-3xl font-bold text-primary mb-1">7+</div>
                         <div class="text-sm text-gray-400">Years Experience</div>
                     </div>
                     <div class="text-center">
@@ -376,10 +376,10 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="" class="btn-primary px-8 py-4 text-lg">
+                    <a href="#contact" class="btn-primary px-8 py-4 text-lg">
                         Start Planning Your Adventure
                     </a>
-                    <a href="" class="btn-secondary px-8 py-4 text-lg">
+                    <a href="#adventures" class="btn-secondary px-8 py-4 text-lg">
                         Browse All Tours
                     </a>
                 </div>

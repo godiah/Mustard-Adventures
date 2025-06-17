@@ -40,7 +40,7 @@
                 </div>
                 <div class="text-white">
                     <div class="text-2xl font-bold text-primary">4.9</div>
-                    <div class="text-sm text-gray-300">Based on 500+ reviews</div>
+                    <div class="text-sm text-gray-300">Based on 50+ reviews</div>
                 </div>
             </div>
         </div>
@@ -294,12 +294,12 @@
                     unforgettable.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#" class="btn-primary px-8 py-4 text-lg">
+                    <a href="#contact" class="btn-primary px-8 py-4 text-lg">
                         Start Your Adventure
                     </a>
-                    <a href="#" class="btn-secondary px-8 py-4 text-lg">
+                    {{-- <a href="#" class="btn-secondary px-8 py-4 text-lg">
                         Read More Reviews
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>

@@ -98,7 +98,7 @@
             <!-- Enhanced CTA Buttons -->
             <div class="fade-in-up-delay-2 mb-16">
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <button
+                    <a href="#adventures"
                         class="btn-primary text-lg px-10 py-4 min-w-[220px] font-heading group relative overflow-hidden">
                         <span class="relative z-10 flex items-center justify-center">
                             Explore Adventures
@@ -108,9 +108,9 @@
                                     d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </span>
-                    </button>
+                    </a>
 
-                    <button
+                    <a href="#contact"
                         class="hidden md:block btn-secondary text-lg px-10 py-4 min-w-[220px] font-heading group relative overflow-hidden">
                         <span class="relative z-10 flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform"
@@ -121,7 +121,7 @@
                             </svg>
                             Plan My Trip
                         </span>
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -137,7 +137,7 @@
                                 </path>
                             </svg>
                         </div>
-                        <div class="text-3xl font-bold text-primary font-heading mb-1">15+</div>
+                        <div class="text-3xl font-bold text-primary font-heading mb-1">7+</div>
                         <div class="text-sm font-body text-gray-200 font-medium">Years Experience</div>
                     </div>
 
@@ -163,7 +163,7 @@
                                 </path>
                             </svg>
                         </div>
-                        <div class="text-3xl font-bold text-accent font-heading mb-1">5000+</div>
+                        <div class="text-3xl font-bold text-accent font-heading mb-1">250+</div>
                         <div class="text-sm font-body text-gray-200 font-medium">Happy Travelers</div>
                     </div>
 

@@ -18,7 +18,7 @@
                 <form action="{{ route('trips.update', $trip) }}" method="POST" enctype="multipart/form-data"
                     class="space-y-6">
                     @csrf
-                    @method('PUT')
+                    @method('PATCH')
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Trip Name -->
@@ -109,6 +109,19 @@
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                 placeholder="e.g., 4.9">
                             @error('rating')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!-- Price -->
+                        <div>
+                            <label for="price" class="block text-sm font-medium text-gray-700 mb-2">Trip Price
+                                (KES)</label>
+                            <input type="number" name="price" id="price" value="{{ old('price', $trip->price) }}"
+                                min="0" step="0.01"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                placeholder="e.g., 15000.00" required>
+                            @error('price')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>

@@ -39,6 +39,7 @@ class TripController extends Controller
             'days' => 'required|integer|min:1|max:30',
             'spots_left' => 'required|integer|min:0|max:100',
             'rating' => 'nullable|numeric|min:0|max:5',
+            'price' => 'required|numeric|min:0',
             'difficulty_level' => 'required|string|max:100',
             'tags' => 'nullable|array',
             'tags.*' => 'string|max:50',
@@ -78,14 +79,15 @@ class TripController extends Controller
     public function update(Request $request, Trip $trip)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'date' => 'required|date|after_or_equal:today',
-            'days' => 'required|integer|min:1|max:30',
-            'spots_left' => 'required|integer|min:0|max:100',
+            'name' => 'sometimes|string|max:255',
+            'description' => 'sometimes|string',
+            'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'date' => 'sometimes|date|after_or_equal:today',
+            'days' => 'sometimes|integer|min:1|max:30',
+            'spots_left' => 'sometimes|integer|min:0|max:100',
             'rating' => 'nullable|numeric|min:0|max:5',
-            'difficulty_level' => 'required|string|max:100',
+            'price' => 'sometimes|numeric|min:0',
+            'difficulty_level' => 'sometimes|string|max:100',
             'tags' => 'nullable|array',
             'tags.*' => 'string|max:50',
             'is_active' => 'boolean'

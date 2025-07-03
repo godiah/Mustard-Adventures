@@ -132,6 +132,12 @@
                             <h3 class="text-lg font-semibold text-secondary mb-3">Trip Details</h3>
                             <div class="space-y-2">
                                 <div class="flex justify-between">
+                                    <span class="text-gray-600">Price:</span>
+                                    <span class="px-2 py-1 rounded-full  font-medium">
+                                        Ksh{{ $trip->price }}
+                                    </span>
+                                </div>
+                                <div class="flex justify-between">
                                     <span class="text-gray-600">Difficulty Level:</span>
                                     <span
                                         class="px-2 py-1 rounded-full text-xs font-medium {{ $trip->getDifficultyBadgeClass() }}">

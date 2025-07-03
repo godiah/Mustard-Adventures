@@ -19,6 +19,7 @@ class Trip extends Model
         'days',
         'spots_left',
         'rating',
+        'price',
         'difficulty_level',
         'tags',
         'is_active'
@@ -28,6 +29,7 @@ class Trip extends Model
         'date' => 'date',
         'tags' => 'array',
         'rating' => 'decimal:2',
+        'price' => 'decimal:2',
         'is_active' => 'boolean'
     ];
 
@@ -39,10 +41,10 @@ class Trip extends Model
         return [
             'all_levels' => 'All Levels',
             'beginner' => 'Beginner',
-            'family_friendly' => 'Family Friendly',
+            'family friendly' => 'Family Friendly',
             'moderate' => 'Moderate',
             'expert' => 'Expert',
-            'premium_experience' => 'Premium Experience'
+            'premium experience' => 'Premium Experience'
         ];
     }
 

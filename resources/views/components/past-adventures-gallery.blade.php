@@ -46,7 +46,7 @@
             </p>
 
             <!-- Filter Tags -->
-            <div class="flex flex-wrap justify-center gap-3 mb-8">
+            {{-- <div class="flex flex-wrap justify-center gap-3 mb-8">
                 <button class="px-4 py-2 rounded-full bg-primary text-white text-sm font-medium filter-btn active"
                     data-filter="all">All Adventures</button>
                 <button
@@ -61,7 +61,7 @@
                 <button
                     class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 text-sm font-medium filter-btn hover:bg-gray-300 transition-colors"
                     data-filter="beach">Beach</button>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Instagram-Style Gallery Grid -->
@@ -164,7 +164,7 @@
             </div>
 
             <!-- Video Testimonial Card -->
-            <div class="col-span-2 gallery-item safari" data-category="safari">
+            {{-- <div class="col-span-2 gallery-item safari" data-category="safari">
                 <div
                     class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer bg-gradient-to-br from-secondary to-secondary-light">
                     <div class="absolute inset-0 flex items-center justify-center">
@@ -189,7 +189,7 @@
                             alt="Sarah" class="w-full h-full object-cover">
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="gallery-item beach" data-category="beach">
                 <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">

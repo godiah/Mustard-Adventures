@@ -106,6 +106,19 @@
                             @enderror
                         </div>
 
+                        <!-- Price -->
+                        <div>
+                            <label for="price" class="block text-sm font-medium text-gray-700 mb-2">Trip Price
+                                (KES)</label>
+                            <input type="number" name="price" id="price" value="{{ old('price') }}" min="0"
+                                step="0.01"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                placeholder="e.g., 15000.00" required>
+                            @error('price')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <!-- Difficulty Level -->
                         <div>
                             <label for="difficulty_level" class="block text-sm font-medium text-gray-700 mb-2">Difficulty

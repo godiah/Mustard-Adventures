@@ -11,8 +11,8 @@
 
     <!-- Adventure Categories Section -->
     <section id="adventures">
-        @include('components.adventure-categories')
-        @include('components.upcoming-adventures')
+        <x-adventure-categories />
+        <x-upcoming-adventures />
     </section>
 
     <!-- Why Choose Us Section -->
@@ -21,7 +21,7 @@
     <!-- Gallery Section -->
     <section id="gallery">
         @include('components.past-adventures-gallery')
-        @include('components.reviews-testimonials')
+        <x-reviews-testimonials />
     </section>
 
     <!-- About Section -->

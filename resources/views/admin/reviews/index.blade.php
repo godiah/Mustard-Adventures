@@ -7,7 +7,7 @@
         <!-- Header -->
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-heading font-bold text-secondary">Adventure Reviews</h1>
-            <a href="{{ route('trips.create') }}" class="btn-primary rounded-lg inline-flex items-center">
+            <a href="{{ route('reviews.create') }}" class="btn-primary rounded-lg inline-flex items-center">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>

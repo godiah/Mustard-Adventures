@@ -104,8 +104,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <a href="mailto:info@mustardadventures.com"
-                                    class="text-gray-300 hover:text-primary transition-colors duration-300">info@mustardadventures.com</a>
+                                <a href="mailto:mustardadventures1@gmail.com"
+                                    class="text-gray-300 hover:text-primary transition-colors duration-300">mustardadventures1@gmail.com</a>
                             </div>
                         </div>
 
@@ -153,13 +153,50 @@
                     <p class="text-gray-300 mb-6">Get exclusive travel tips, early access to new tours, and special
                         offers delivered to your inbox.</p>
 
-                    <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                        <input type="email" placeholder="Enter your email"
-                            class="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300">
-                        <button type="submit" class="btn-primary px-6 py-3 whitespace-nowrap">
-                            Subscribe
-                        </button>
+                    <form id="newsletterForm" class="flex flex-col gap-4 max-w-md mx-auto">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                id="newsletterEmail"
+                                class="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300"
+                            />
+                            <button
+                                type="submit"
+                                id="newsletterSubmit"
+                                class="btn-primary px-6 py-3 whitespace-nowrap"
+                            >
+                            <span id="submitText">Subscribe</span>
+                            <span id="loadingSpinner" class="hidden">
+                                <svg
+                                    class="animate-spin h-5 w-5 text-white inline"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                <circle
+                                    class="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    stroke-width="4"
+                                ></circle>
+                                <path
+                                    class="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                ></path>
+                                </svg>
+                            </span>
+                            </button>
+                        </div>
+
+                        <!-- Display message below form -->
+                        <div id="messageDisplay" class="hidden text-sm text-white"></div>
                     </form>
+
                 </div>
             </div>
 
@@ -262,3 +299,65 @@
         </div>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('newsletterForm');
+        const submitBtn = document.getElementById('newsletterSubmit');
+        const submitText = document.getElementById('submitText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const messageDisplay = document.getElementById('messageDisplay');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+            messageDisplay.classList.add('hidden');
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch('{{ route('newsletter.subscribe') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                            .content,
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || 'Something went wrong');
+                }
+
+                // Show success message
+                messageDisplay.textContent = data.message;
+                messageDisplay.classList.remove('hidden', 'text-red-100');
+                messageDisplay.classList.add('text-green-100');
+                form.reset();
+
+            } catch (error) {
+                // Show error message
+                messageDisplay.textContent = error.message;
+                messageDisplay.classList.remove('hidden', 'text-green-100');
+                messageDisplay.classList.add('text-red-100');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitText.classList.remove('hidden');
+                loadingSpinner.classList.add('hidden');
+                messageDisplay.classList.remove('hidden');
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    messageDisplay.classList.add('hidden');
+                }, 5000);
+            }
+        });
+    });
+</script>

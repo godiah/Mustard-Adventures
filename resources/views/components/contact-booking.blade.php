@@ -79,7 +79,7 @@
                         </a>
 
                         <!-- Email -->
-                        <a href="mailto:info@mustardadventures.com"
+                        <a href="mailto:mustardadventures1@gmail.com"
                         target="_blank"
                             class="flex items-center p-4 rounded-2xl bg-teal/10 border border-teal/20 hover:bg-teal/20 transition-all duration-300 group">
                             <div
@@ -92,7 +92,7 @@
                             </div>
                             <div>
                                 <h4 class="font-heading text-lg font-bold text-white mb-1">Email</h4>
-                                <p class="text-teal font-medium">info@mustardadventures.com</p>
+                                <p class="text-teal font-medium">mustardadventures1@gmail.com</p>
                                 <p class="text-gray-400 text-sm">Response within 2 hours</p>
                             </div>
                         </a>
@@ -153,42 +153,47 @@
                 <div class="glass-card-dark p-8 rounded-3xl">
                     <h3 class="font-heading text-2xl font-bold text-white mb-6">Quick Booking Inquiry</h3>
 
-                    <form class="space-y-6">
+                    <form id="enquiryForm" class="space-y-6">
+                        @csrf
                         <!-- Personal Information -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-gray-300 text-sm font-medium mb-2">First Name *</label>
-                                <input type="text"
+                                <input type="text" name="first_name" id="first_name"
                                     class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300"
                                     placeholder="John" required>
+                                <span class="error-message text-red-400 text-sm hidden"></span>
                             </div>
                             <div>
                                 <label class="block text-gray-300 text-sm font-medium mb-2">Last Name *</label>
-                                <input type="text"
+                                <input type="text" name="last_name" id="last_name"
                                     class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300"
                                     placeholder="Doe" required>
+                                <span class="error-message text-red-400 text-sm hidden"></span>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-gray-300 text-sm font-medium mb-2">Email *</label>
-                                <input type="email"
+                                <input type="email" name="email" id="email"
                                     class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300"
                                     placeholder="john@example.com" required>
+                                <span class="error-message text-red-400 text-sm hidden"></span>
                             </div>
                             <div>
                                 <label class="block text-gray-300 text-sm font-medium mb-2">Phone</label>
-                                <input type="tel"
+                                <input type="tel" name="phone" id="phone"
                                     class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300"
-                                    placeholder="+1 234 567 8900">
+                                    placeholder="+254 710 136 271">
+                                <span class="error-message text-red-400 text-sm hidden"></span>
                             </div>
                         </div>
 
                         <!-- Adventure Preferences -->
                         <div>
                             <label class="block text-gray-300 text-sm font-medium mb-2">Adventure Type *</label>
-                            <select
+                            <select name="adventure_type" id="adventure_type"
                                 class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300"
                                 required>
                                 <option value="" class="bg-secondary text-white">Select an adventure</option>
@@ -200,17 +205,19 @@
                                 </option>
                                 <option value="custom" class="bg-secondary text-white">Custom Adventure</option>
                             </select>
+                            <span class="error-message text-red-400 text-sm hidden"></span>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-gray-300 text-sm font-medium mb-2">Preferred Date</label>
-                                <input type="date"
+                                <input type="date" name="preferred_date" id="preferred_date"
                                     class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300">
+                                <span class="error-message text-red-400 text-sm hidden"></span>
                             </div>
                             <div>
                                 <label class="block text-gray-300 text-sm font-medium mb-2">Group Size</label>
-                                <select
+                                <select name="group_size" id="group_size"
                                     class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300">
                                     <option value="" class="bg-secondary text-white">Select group size</option>
                                     <option value="1" class="bg-secondary text-white">Solo Traveler</option>
@@ -219,6 +226,7 @@
                                     <option value="6-10" class="bg-secondary text-white">6-10 People</option>
                                     <option value="10+" class="bg-secondary text-white">10+ People</option>
                                 </select>
+                                <span class="error-message text-red-400 text-sm hidden"></span>
                             </div>
                         </div>
 
@@ -226,26 +234,37 @@
                         <div>
                             <label class="block text-gray-300 text-sm font-medium mb-2">Tell us about your dream
                                 adventure</label>
-                            <textarea rows="4"
+                            <textarea rows="4" name="message" id="message"
                                 class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white/20 transition-all duration-300 resize-none"
                                 placeholder="Share your interests, fitness level, special requirements, or any questions you have..."></textarea>
+                            <span class="error-message text-red-400 text-sm hidden"></span>
                         </div>
 
                         <!-- Submit Button -->
-                        <button type="submit"
+                        <button type="submit" id="submitBtn"
                             class="w-full btn-primary py-4 text-lg font-heading group relative overflow-hidden">
-                            <span class="relative z-10 flex items-center justify-center">
+                            <span id="submitText" class="relative z-10 flex items-center justify-center">
                                 Send Inquiry
-                                <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
+                                {{-- <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg> --}}
+                            </span>
+                            <span id="loadingText" class="relative z-10 items-center justify-center hidden">
+                                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>
+                                Sending...
                             </span>
                         </button>
 
+                        <!-- Success/Error Messages -->
+                        <div id="formMessage" class="hidden p-4 rounded-xl text-center"></div>
+
                         <p class="text-gray-400 text-sm text-center">
-                            We'll respond within 2 hours with a personalized adventure proposal
+                            We'll respond as soon as possible with a personalized adventure proposal
                         </p>
                     </form>
                 </div>
@@ -316,7 +335,7 @@
                     <a href="https://wa.me/254710136271" target="_blank" class="btn-primary px-6 py-3">
                         Start Planning Now
                     </a>
-                    <a href="mailto:info@mustardadventures.com" class="btn-secondary px-6 py-3">
+                    <a href="mailto:mustardadventures1@gmail.com" class="btn-secondary px-6 py-3">
                         Get Custom Quote
                     </a>
                 </div>
@@ -324,3 +343,143 @@
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('enquiryForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const loadingText = document.getElementById('loadingText');
+        const formMessage = document.getElementById('formMessage');
+
+        // Form submission handler
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Clear previous errors and messages
+            clearErrors();
+            hideMessage();
+
+            // Show loading state
+            setLoadingState(true);
+
+            try {
+                // Collect form data
+                const formData = new FormData(form);
+
+                // Send AJAX request
+                const response = await fetch('{{ route("contact.send") }}', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                        .content,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Success
+                    showMessage('success', data.message || 'Your inquiry has been sent successfully! We\'ll get back to you soon.');
+                    form.reset();
+                } else {
+                    // Handle validation errors
+                    if (data.errors) {
+                        displayErrors(data.errors);
+                    } else {
+                        showMessage('error', data.message || 'Something went wrong. Please try again.');
+                    }
+                }
+
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showMessage('error', 'Network error. Please check your connection and try again.');
+            } finally {
+                setLoadingState(false);
+            }
+        });
+
+        // Helper functions
+        function setLoadingState(loading) {
+            if (loading) {
+                submitBtn.disabled = true;
+                submitText.classList.add('hidden');
+                loadingText.classList.remove('hidden');
+                loadingText.classList.add('flex');
+            } else {
+                submitBtn.disabled = false;
+                submitText.classList.remove('hidden');
+                loadingText.classList.add('hidden');
+                loadingText.classList.remove('flex');
+            }
+        }
+
+        function showMessage(type, message) {
+            formMessage.className = `p-4 rounded-xl text-center ${type === 'success' ? 'bg-green-500/20 border border-green-500/30 text-green-300' : 'bg-red-500/20 border border-red-500/30 text-red-300'}`;
+            formMessage.textContent = message;
+            formMessage.classList.remove('hidden');
+
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    hideMessage();
+                }, 5000);
+            }
+        }
+
+        function hideMessage() {
+            formMessage.classList.add('hidden');
+        }
+
+        function clearErrors() {
+            const errorSpans = form.querySelectorAll('.error-message');
+            const inputs = form.querySelectorAll('input, select, textarea');
+
+            errorSpans.forEach(span => {
+                span.classList.add('hidden');
+                span.textContent = '';
+            });
+
+            inputs.forEach(input => {
+                input.classList.remove('border-red-500', 'focus:border-red-500');
+                input.classList.add('border-white/20', 'focus:border-primary');
+            });
+        }
+
+        function displayErrors(errors) {
+            Object.keys(errors).forEach(fieldName => {
+                const field = form.querySelector(`[name="${fieldName}"]`);
+                const errorSpan = field?.parentNode.querySelector('.error-message');
+
+                if (field && errorSpan) {
+                    // Add error styling to field
+                    field.classList.remove('border-white/20', 'focus:border-primary');
+                    field.classList.add('border-red-500', 'focus:border-red-500');
+
+                    // Show error message
+                    errorSpan.textContent = errors[fieldName][0];
+                    errorSpan.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Real-time validation - remove error styling when user starts typing
+        const formInputs = form.querySelectorAll('input, select, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.classList.contains('border-red-500')) {
+                    this.classList.remove('border-red-500', 'focus:border-red-500');
+                    this.classList.add('border-white/20', 'focus:border-primary');
+
+                    const errorSpan = this.parentNode.querySelector('.error-message');
+                    if (errorSpan) {
+                        errorSpan.classList.add('hidden');
+                        errorSpan.textContent = '';
+                    }
+                }
+            });
+        });
+    });
+</script>

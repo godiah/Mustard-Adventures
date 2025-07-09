@@ -322,6 +322,8 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const number = entry.target.querySelector('.text-3xl');
+                if (!number) return; // Safely skip if element not found
+
                 const finalNumber = parseInt(number.textContent);
                 let currentNumber = 0;
                 const increment = finalNumber / 50;
@@ -329,13 +331,16 @@
                 const counter = setInterval(() => {
                     currentNumber += increment;
                     if (currentNumber >= finalNumber) {
-                        number.textContent = finalNumber + (number.textContent.includes('+') ?
-                            '+' : number.textContent.includes('.') ? '.9' : '%');
+                        number.textContent = finalNumber + (
+                            number.textContent.includes('+') ? '+' :
+                            number.textContent.includes('.') ? '.9' : '%'
+                        );
                         clearInterval(counter);
                     } else {
-                        number.textContent = Math.floor(currentNumber) + (number.textContent
-                            .includes('+') ? '+' : number.textContent.includes('.') ? '.0' :
-                            '%');
+                        number.textContent = Math.floor(currentNumber) + (
+                            number.textContent.includes('+') ? '+' :
+                            number.textContent.includes('.') ? '.0' : '%'
+                        );
                     }
                 }, 50);
             }

@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\AdventuresController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TripController;
+use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\Admin\TypesController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReviewsController;
-use App\Http\Controllers\Admin\TripController;
-use App\Http\Controllers\Admin\TypesController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AdventuresController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,6 +28,9 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/reset-password/{token}', [AuthController::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [AuthController::class, 'reset'])->name('password.update');
+    Route::post('/newsletter/subscribe', [SubscriberController::class, 'subscribe'])->name('newsletter.subscribe');
+    Route::post('/send-enquiry', [ContactController::class, 'sendEmail'])->name('contact.send');
+    // Route::get('/newsletter/unsubscribe/{token}', [UnsubscribeController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 });
 
 // Authenticated Routes

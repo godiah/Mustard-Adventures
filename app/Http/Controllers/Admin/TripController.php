@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Trip;
+use App\Mail\NewTripMail;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class TripController extends Controller
@@ -51,7 +54,13 @@ class TripController extends Controller
             $validated['image'] = $request->file('image')->store('trips', 'public');
         }
 
-        Trip::create($validated);
+        $trip = Trip::create($validated);
+
+        $subscribers = Subscriber::where('status', 'subscribed')->get();
+        foreach ($subscribers as $subscriber) {
+            // Send email to each subscriber about the new trip
+            Mail::to($subscriber->email)->queue(new NewTripMail($trip));
+        }
 
         return redirect()->route('trips.index')
             ->with('success', 'Trip created successfully!');

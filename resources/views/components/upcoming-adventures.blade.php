@@ -170,37 +170,19 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const featuredBtn = document.getElementById('featuredBtn');
-        const calendarBtn = document.getElementById('calendarBtn');
-        const allBtn = document.getElementById('allBtn');
-        const calendarView = document.getElementById('calendarView');
-        const featuredGrid = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3');
+        // Initialize upcoming adventures section
+        const adventuresGrid = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3');
 
-        // Toggle between views
-        featuredBtn.addEventListener('click', function() {
-            featuredBtn.classList.add('bg-primary', 'text-white');
-            featuredBtn.classList.remove('text-secondary');
-            calendarBtn.classList.remove('bg-primary', 'text-white');
-            calendarBtn.classList.add('text-secondary');
-            allBtn.classList.remove('bg-primary', 'text-white');
-            allBtn.classList.add('text-secondary');
+        if (adventuresGrid) {
+            // Example: Add hover effects, lazy loading, or other interactive features
+            const adventureCards = adventuresGrid.querySelectorAll('.rounded-3xl');
 
-            calendarView.classList.add('hidden');
-            featuredGrid.classList.remove('hidden');
-        });
-
-        calendarBtn.addEventListener('click', function() {
-            calendarBtn.classList.add('bg-primary', 'text-white');
-            calendarBtn.classList.remove('text-secondary');
-            featuredBtn.classList.remove('bg-primary', 'text-white');
-            featuredBtn.classList.add('text-secondary');
-            allBtn.classList.remove('bg-primary', 'text-white');
-            allBtn.classList.add('text-secondary');
-
-            calendarView.classList.remove('hidden');
-            featuredGrid.classList.add('hidden');
-        });
-
-
+            adventureCards.forEach(card => {
+                // Add any card-specific interactions here if needed
+                card.addEventListener('mouseenter', function() {
+                    // Optional: Add additional hover effects
+                });
+            });
+        }
     });
 </script>

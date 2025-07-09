@@ -92,7 +92,7 @@
                                 </svg>
                                 <span class="text-sm">247 likes</span>
                             </div>
-                            <span class="text-xs text-gray-300">2 days ago</span>
+                            {{-- <span class="text-xs text-gray-300">2 days ago</span> --}}
                         </div>
                     </div>
 
@@ -130,7 +130,7 @@
                                 </svg>
                                 <span class="text-xs">89</span>
                             </div>
-                            <span class="text-xs text-gray-300">1 week ago</span>
+                            {{-- <span class="text-xs text-gray-300">1 week ago</span> --}}
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
 
                     <div
                         class="absolute bottom-3 left-3 right-3 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                        <h4 class="font-heading text-sm font-bold mb-1">Maasai Village</h4>
+                        <h4 class="font-heading text-sm font-bold mb-1">Kathendeni Hike</h4>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
                                 <svg class="w-3 h-3 text-accent mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -157,7 +157,7 @@
                                 </svg>
                                 <span class="text-xs">156</span>
                             </div>
-                            <span class="text-xs text-gray-300">3 days ago</span>
+                            {{-- <span class="text-xs text-gray-300">3 days ago</span> --}}
                         </div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
 
                     <div
                         class="absolute bottom-3 left-3 right-3 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                        <h4 class="font-heading text-sm font-bold mb-1">Diani Beach Bliss</h4>
+                        <h4 class="font-heading text-sm font-bold mb-1">Samburu Cultural Tour</h4>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
                                 <svg class="w-3 h-3 text-accent mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -212,7 +212,7 @@
                                 </svg>
                                 <span class="text-xs">203</span>
                             </div>
-                            <span class="text-xs text-gray-300">5 days ago</span>
+                            {{-- <span class="text-xs text-gray-300">5 days ago</span> --}}
                         </div>
                     </div>
                 </div>
@@ -239,14 +239,14 @@
                                 </svg>
                                 <span class="text-xs">312</span>
                             </div>
-                            <span class="text-xs text-gray-300">1 day ago</span>
+                            {{-- <span class="text-xs text-gray-300">1 day ago</span> --}}
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Another Video Testimonial -->
-            <div class="gallery-item mountain" data-category="mountain">
+            {{-- <div class="gallery-item mountain" data-category="mountain">
                 <div
                     class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer bg-gradient-to-br from-teal to-sky-blue">
                     <div class="absolute inset-0 flex items-center justify-center">
@@ -270,7 +270,7 @@
                             alt="Mike" class="w-full h-full object-cover">
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="gallery-item cultural" data-category="cultural">
                 <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
@@ -283,7 +283,7 @@
 
                     <div
                         class="absolute bottom-3 left-3 right-3 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                        <h4 class="font-heading text-sm font-bold mb-1">Traditional Dance</h4>
+                        <h4 class="font-heading text-sm font-bold mb-1">Nature Walks</h4>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
                                 <svg class="w-3 h-3 text-accent mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -293,7 +293,7 @@
                                 </svg>
                                 <span class="text-xs">178</span>
                             </div>
-                            <span class="text-xs text-gray-300">6 days ago</span>
+                            {{-- <span class="text-xs text-gray-300">6 days ago</span> --}}
                         </div>
                     </div>
                 </div>
@@ -331,31 +331,23 @@
                 alt: 'Amboseli Safari',
                 title: 'Amboseli Adventure',
                 likes: 195,
-                time: '4 days ago'
+                //time: '4 days ago'
             },
             {
                 category: 'beach',
                 image: '{{ asset('images/gallery/wildbeast.jpg') }}',
-                alt: 'Watamu Beach',
-                title: 'Watamu Waves',
+                alt: 'Mount Kenya Park',
+                title: 'Mount Kenya Park',
                 likes: 230,
-                time: '2 days ago'
+                //time: '2 days ago'
             },
             {
                 category: 'mountain',
-                image: '{{ asset('images/gallery/waterfall.jpg') }}',
-                alt: 'Aberdare Ranges',
-                title: 'Aberdare Trek',
-                likes: 142,
-                time: '1 week ago'
-            },
-            {
-                category: 'cultural',
                 image: '{{ asset('images/gallery/lake.jpg') }}',
-                alt: 'Samburu Culture',
-                title: 'Samburu Traditions',
+                alt: 'Naivasha Crater',
+                title: 'Naivasha Crater',
                 likes: 167,
-                time: '3 days ago'
+                // time: '3 days ago'
             }
         ];
 

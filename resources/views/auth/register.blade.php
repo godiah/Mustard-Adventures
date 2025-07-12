@@ -254,16 +254,16 @@
             }
 
             // For debugging purposes
-            console.log("Password toggle elements:", {
-                togglePassword: !!togglePassword,
-                password: !!password,
-                showPasswordIcon: !!showPasswordIcon,
-                hidePasswordIcon: !!hidePasswordIcon,
-                toggleConfirmPassword: !!toggleConfirmPassword,
-                confirmPassword: !!confirmPassword,
-                showConfirmPasswordIcon: !!showConfirmPasswordIcon,
-                hideConfirmPasswordIcon: !!hideConfirmPasswordIcon
-            });
+            // console.log("Password toggle elements:", {
+            //     togglePassword: !!togglePassword,
+            //     password: !!password,
+            //     showPasswordIcon: !!showPasswordIcon,
+            //     hidePasswordIcon: !!hidePasswordIcon,
+            //     toggleConfirmPassword: !!toggleConfirmPassword,
+            //     confirmPassword: !!confirmPassword,
+            //     showConfirmPasswordIcon: !!showConfirmPasswordIcon,
+            //     hideConfirmPasswordIcon: !!hideConfirmPasswordIcon
+            // });
         });
     </script>
 @endsection

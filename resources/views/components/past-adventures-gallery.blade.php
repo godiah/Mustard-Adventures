@@ -193,7 +193,7 @@
 
             <div class="gallery-item beach" data-category="beach">
                 <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
-                    <img src="{{ asset('images/gallery/culture.jpg') }}" alt="Diani Beach"
+                    <img src="{{ asset('images/mustard-adventures.jpg') }}" alt="Diani Beach"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
                     <div
@@ -202,7 +202,7 @@
 
                     <div
                         class="absolute bottom-3 left-3 right-3 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                        <h4 class="font-heading text-sm font-bold mb-1">Samburu Cultural Tour</h4>
+                        <h4 class="font-heading text-sm font-bold mb-1">Game Drive</h4>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
                                 <svg class="w-3 h-3 text-accent mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -270,7 +270,7 @@
                             alt="Mike" class="w-full h-full object-cover">
                     </div>
                 </div>
-            </div> --}}            
+            </div> --}}
         </div>
 
         <!-- Load More Button -->
@@ -314,22 +314,22 @@
                 likes: 230,
                 //time: '2 days ago'
             },
-            {
-                category: 'mountain',
-                image: '{{ asset('images/gallery/lake.jpg') }}',
-                alt: 'Naivasha Crater',
-                title: 'Naivasha Crater',
-                likes: 167,
-                // time: '3 days ago'
-            },
-            {
-                category: 'safari',
-                image: '{{ asset('images/gallery/lion.jpg') }}',
-                alt: 'Amboseli Adventure',
-                title: 'Amboseli Adventure',
-                likes: 87,
-                // time: '3 days ago'
-            }
+            // {
+            //     category: 'mountain',
+            //     image: '{{ asset('images/gallery/lake.jpg') }}',
+            //     alt: 'Naivasha Crater',
+            //     title: 'Naivasha Crater',
+            //     likes: 167,
+            //     time: '3 days ago'
+            // },
+            // {
+            //     category: 'safari',
+            //     image: '{{ asset('images/gallery/lion.jpg') }}',
+            //     alt: 'Amboseli Adventure',
+            //     title: 'Amboseli Adventure',
+            //     likes: 87,
+            //     time: '3 days ago'
+            // }
         ];
 
         // Function to create a gallery item
@@ -352,7 +352,7 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-xs">${item.likes}</span>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div>
